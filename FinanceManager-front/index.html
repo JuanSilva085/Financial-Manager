@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gerenciador Financeiro</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/colors.css">
+</head>
+<body>
+    <h1>Gerenciador Financeiro</h1>
+  
+<form id="transaction-form">
+    <label>
+        Tipo:
+        <select id="type" name="type" required>
+            <option value="Income">Receita</option>
+            <option value="Expense">Despesa</option>
+        </select>
+    </label>
+    <label>
+        Categoria:
+        <input type="text" id="category" name="category" placeholder="Ex: Alimentação" required />
+    </label>
+    <label>
+        Descrição:
+        <input type="text" id="description" name="description" placeholder="Descrição" />
+    </label>
+    <label>
+        Valor:
+        <input type="number" id="amount" name="amount" step="0.01" min="0.01" required />
+    </label>
+    <button type="submit">Adicionar</button>
+</form>  
+
+   <section>
+      <h2>Saldo Atual</h2>
+      <p id="balance">$ 0.00</p>
+   </section>
+  
+   <section class="charts">
+     <canvas id="incomeExpenseChart"></canvas>
+   </section>
+
+    <section>
+        <h2>Transações</h2>
+        <ul id="transaction-list"></ul>
+    </section>
+ 
+    <button class="export" id="export-excel">Export your transactions for Excel</button>
+
+    <button class="export" id="export-table-pdf">Export your transactions in PDF (table)</button>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

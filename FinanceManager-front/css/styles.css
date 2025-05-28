@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #161719 0%, #21262a 50%, #151524 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 60%, rgba(239, 68, 68, 0.04) 0%, transparent 50%);
+    z-index: -1;
+    animation: backgroundPulse 10s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+body {
+    max-width: 1200;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 50px;
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8, #10b981);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: var(--primary-gradient);
+    border-radius: 2px;
+    box-shadow: 0 0 20px var(--glow-color);
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+
+
+/* FORM */
+#transaction-form {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#transaction-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+}
+
+#transaction-form:hover::before {
+    left: 100%;
+}
+
+#transaction-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+#transaction-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 22px;
+    color: #f9f9f9;
+}
+
+#transaction-form input,
+#transaction-form select {
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    background: #2c2c3a;
+    color: #f9f9f9;
+    font-size: 18px;
+    transition: all 0.5s ease;
+    backdrop-filter: blur(10px);
+}
+
+#transaction-form input:focus,
+#transaction-form select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    transform: scale(1.02);
+}
+
+#transaction-form input::placeholder {
+    color: var(--text-secondary);
+}
+
+#transaction-form button {
+    grid-column: 1 / -1;
+    padding: 18px 40px;
+    background: #42a5f5;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#transaction-form button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+#transaction-form button:hover::before {
+    left: 100%;
+}
+
+#transaction-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+}
+
+#transaction-form button:active {
+    transform: translateY(-1px);
+}
+
+
+/* Seções */
+section {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+
+
+section h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+
+
+#balance {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    background: var(--success-gradient);
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+#balance::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+
+
+#transaction-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #f9f9f9;
+    font-size: 20px;
+}
+
+#transaction-list li {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#transaction-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary-gradient);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+#transaction-list li:hover::before {
+    transform: scaleY(1);
+}
+
+#transaction-list li:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.transaction-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.transaction-category {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.transaction-description {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.transaction-amount {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 20px;
+    min-width: 100px;
+    text-align: center;
+}
+
+.transaction-amount.income {
+    background: var(--success-gradient);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.transaction-amount.expense {
+    background: var(--danger-gradient);
+    color: white;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* DASHBOARD */
+.charts {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.charts:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+#incomeExpenseChart {
+    max-width: 100%;
+    height: 400px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+@keyframes fadeInUp {
+   from {
+     opacity: 0;
+     transform: translateY(30px);
+   }
+   to {
+     opacity: 1;
+     transform: translateY(0);
+    }
+}
+
+section {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+#transaction-form {
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-gradient);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+button {
+  background-color: #34a794; 
+  color: #ffffff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 22px;
+  transition: background-color 0.8s ease;
+  margin: 0.25rem;
+  user-select: none;
+}
+
+button:hover {
+  background-color: #42a5f5;  
+}
+
+.delete-btn {
+  background-color: #e53935; 
+  padding: 0.3rem 0.7rem;
+  font-size: 1.2rem;
+  border-radius: 18px;
+  margin-left: 0.5rem;
+  transition: background-color 0.5s ease;
+}
+
+.delete-btn:hover {
+  background-color: #b71c1c; 
+  color: #fff;
+}
+
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+    
+    #transaction-form {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    
+    section {
+        padding: 20px;
+    }
+    
+    #balance {
+        font-size: 2rem;
+    }
+    
+    #transaction-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .transaction-amount {
+        align-self: flex-end;
+    }
+}
