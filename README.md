@@ -25,3 +25,13 @@
 ![Captura de tela 2025-05-27 194020](https://github.com/user-attachments/assets/1452043c-8e55-43d6-b426-ce257052640c)
 
 ![Captura de tela 2025-05-27 194111](https://github.com/user-attachments/assets/95fb5078-4a99-40d5-8412-26bac05a7332)
+
+<hr>
+
+📂 Como Rodar o Projeto? Clone o repositório:
+
+git clone [https://github.com/JuanSilva085/FinancialManager.git](https://github.com/JuanSilva085/Financial-Manager)
+
+Abra no Visual Studio e restaure os pacotes ao abrir a solução (.sln)
+
+Inicie a aplicação (com F5 ou dotnet run)
